@@ -4,7 +4,7 @@ import lombok.Getter;
 
 public enum CommonStatusEnum {
 
-    SUCCESS(1, "success"), FAIL(0, "fail");
+    VERIFICATION_CODE_ERROR(1099,"验证码不正确"),SUCCESS(1, "success"), FAIL(0, "fail");
     @Getter
     private int code;
     @Getter

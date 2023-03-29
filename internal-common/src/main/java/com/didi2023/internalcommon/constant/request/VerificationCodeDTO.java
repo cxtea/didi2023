@@ -1,4 +1,4 @@
-package com.didi2023.passemger.DTO;
+package com.didi2023.internalcommon.constant.request;
 
 import lombok.Data;
 
