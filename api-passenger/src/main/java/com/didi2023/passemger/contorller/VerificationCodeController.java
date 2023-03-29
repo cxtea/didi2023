@@ -1,7 +1,7 @@
 package com.didi2023.passemger.contorller;
 
 import com.didi2023.internalcommon.constant.dto.ResponseResult;
-import com.didi2023.passemger.DTO.VerificationCodeDTO;
+import com.didi2023.internalcommon.constant.request.VerificationCodeDTO;
 import com.didi2023.passemger.service.VerificationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +19,7 @@ public class VerificationCodeController {
     public ResponseResult verificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO) {
 
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
+        System.out.println("乘客手机号:" + passengerPhone);
         return verificationCodeService.generatorCode(passengerPhone);
 
     }

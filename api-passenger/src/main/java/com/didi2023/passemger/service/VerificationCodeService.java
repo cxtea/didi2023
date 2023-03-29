@@ -1,6 +1,8 @@
 package com.didi2023.passemger.service;
 
 import cn.hutool.json.JSONObject;
+import com.alibaba.cloud.commons.lang.StringUtils;
+import com.didi2023.internalcommon.constant.CommonStatusEnum;
 import com.didi2023.internalcommon.constant.dto.ResponseResult;
 import com.didi2023.internalcommon.constant.response.NumberCodeResponse;
 import com.didi2023.internalcommon.constant.response.TokenResponse;
@@ -28,8 +30,9 @@ public class VerificationCodeService {
         ResponseResult<NumberCodeResponse> numberCodeResponseResponse = serviceVerificationcodeClient.getNumberCode(6);
         int numberCode = numberCodeResponseResponse.getData().getNumberCode();
 
+        System.out.println("验证码:"+numberCode);
         //调用redis 服务将验证码缓存到redis
-        String key = verificationCodePrefix + passengerPhone;
+        String key = generateKeyByPhone(passengerPhone);
         stringRedisTemplate.opsForValue().set(key, numberCode + "", 2, TimeUnit.MINUTES);
 
         //通过短信服务商,将对应的验证码发送到手机上 ,阿里短信服务 TODO
@@ -45,15 +48,27 @@ public class VerificationCodeService {
      */
     public ResponseResult checkCode(String passengerPhone,String verificationCode){
 
-        // 根据手机号 去redis 读取验证码 TODO
-
-        // 校验验证码 TODO
-
+        //生成key
+        String key = generateKeyByPhone(passengerPhone);
+        //根据key获取验证码
+        String codeRedis = stringRedisTemplate.opsForValue().get(key);
+        System.out.println("获取到redis中的验证码:"+ codeRedis);
+        // 校验验证码
+        if (StringUtils.isBlank(codeRedis)){
+            return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(),CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
+        }
+        if (!verificationCode.trim().equals(codeRedis.trim())){
+            return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode(),CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
+        }
         //判断原来是否有用户,并进行对应处理 TODO
 
         //颁发令牌 TODO
         TokenResponse tokenResponse = new TokenResponse();
         tokenResponse.setToken("token value");
         return ResponseResult.success(tokenResponse);
+    }
+
+    private String generateKeyByPhone(String phone){
+        return verificationCodePrefix + phone;
     }
 }
