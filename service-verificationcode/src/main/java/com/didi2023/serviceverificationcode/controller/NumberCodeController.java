@@ -17,6 +17,7 @@ public class NumberCodeController {
         double mathRandom = (Math.random() * 9 + 1) * Math.pow(10, size - 1);
         int code = (int) mathRandom;
 
+        System.out.println("生成的 numberCode : " + code);
 
         NumberCodeResponse response = new NumberCodeResponse();
         response.setNumberCode(code);
