@@ -1,14 +1,13 @@
 package com.didi2023.passemger.DTO;
 
+import lombok.Data;
+
+@Data
 public class VerificationCodeDTO {
 
     String passengerPhone ;
 
-    public String getPassengerPhone() {
-        return passengerPhone;
-    }
+    String verificationCode;
 
-    public void setPassengerPhone(String passengerPhone) {
-        this.passengerPhone = passengerPhone;
-    }
+
 }
