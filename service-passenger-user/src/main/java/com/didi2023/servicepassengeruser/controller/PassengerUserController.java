@@ -17,12 +17,12 @@ public class PassengerUserController {
 
 
     @RequestMapping("/user")
-    public ResponseResult loginOrReg(@RequestBody VerificationCodeDTO verificationCodeDTO){
+    public ResponseResult loginOrRegister(@RequestBody VerificationCodeDTO verificationCodeDTO){
 
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
 
         System.out.println(passengerPhone);
 
-        return userService.loginOrReg(passengerPhone);
+        return userService.loginOrRegister(passengerPhone);
     }
 }

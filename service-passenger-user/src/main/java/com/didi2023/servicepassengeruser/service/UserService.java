@@ -17,7 +17,7 @@ public class UserService {
 
     @Autowired
     private PassengerUserMapper passengerUserMapper;
-    public ResponseResult loginOrReg(String passengerPhone){
+    public ResponseResult loginOrRegister(String passengerPhone){
         System.out.println("user service 被调用 ,手机号:"+ passengerPhone);
         //根据手机号查询用户信息
         Map<String,Object> map = new HashMap<>();
