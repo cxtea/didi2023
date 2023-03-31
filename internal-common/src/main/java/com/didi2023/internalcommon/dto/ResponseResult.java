@@ -1,4 +1,4 @@
-package com.didi2023.internalcommon.constant.dto;
+package com.didi2023.internalcommon.dto;
 
 import com.didi2023.internalcommon.constant.CommonStatusEnum;
 import lombok.Data;

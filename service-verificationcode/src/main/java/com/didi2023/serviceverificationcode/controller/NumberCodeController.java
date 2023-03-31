@@ -1,7 +1,7 @@
 package com.didi2023.serviceverificationcode.controller;
 
-import com.didi2023.internalcommon.constant.dto.ResponseResult;
-import com.didi2023.internalcommon.constant.response.NumberCodeResponse;
+import com.didi2023.internalcommon.dto.ResponseResult;
+import com.didi2023.internalcommon.response.NumberCodeResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

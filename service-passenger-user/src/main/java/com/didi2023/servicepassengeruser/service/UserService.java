@@ -1,7 +1,7 @@
 package com.didi2023.servicepassengeruser.service;
 
-import com.didi2023.internalcommon.constant.dto.ResponseResult;
-import com.didi2023.internalcommon.constant.response.TokenResponse;
+import com.didi2023.internalcommon.dto.ResponseResult;
+import com.didi2023.internalcommon.response.TokenResponse;
 import com.didi2023.servicepassengeruser.dto.PassengerUser;
 import com.didi2023.servicepassengeruser.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;

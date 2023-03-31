@@ -1,4 +1,4 @@
-package com.didi2023.internalcommon.constant.request;
+package com.didi2023.internalcommon.request;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.didi2023.internalcommon.constant.response;
+package com.didi2023.internalcommon.response;
 
 import lombok.Data;
 

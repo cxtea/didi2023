@@ -1,7 +1,7 @@
 package com.didi2023.passemger.contorller;
 
-import com.didi2023.internalcommon.constant.dto.ResponseResult;
-import com.didi2023.internalcommon.constant.request.VerificationCodeDTO;
+import com.didi2023.internalcommon.dto.ResponseResult;
+import com.didi2023.internalcommon.request.VerificationCodeDTO;
 import com.didi2023.passemger.service.VerificationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
