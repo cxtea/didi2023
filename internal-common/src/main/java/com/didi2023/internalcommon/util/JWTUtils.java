@@ -2,6 +2,9 @@ package com.didi2023.internalcommon.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.didi2023.internalcommon.dto.TokenResult;
 
@@ -18,13 +21,13 @@ public class JWTUtils {
     private static final String JWT_TOKEN_TYPE = "tokenType";
 
     // 生成token
-    public static String generateToken(String phone, String identify,String tokenType) {
+    public static String generateToken(String phone, String identify, String tokenType) {
 
         HashMap<String, String> map = new HashMap<>();
         map.put(JWT_KEY_PHONE, phone);
         map.put(JWT_KEY_IDENTIFY, identify);
         //双 token
-        map.put(JWT_TOKEN_TYPE,tokenType);
+        map.put(JWT_TOKEN_TYPE, tokenType);
 
         //token 添加过期时间
 //        Calendar calendar = Calendar.getInstance();
@@ -55,6 +58,17 @@ public class JWTUtils {
 
         return tokenResult;
 
+    }
+
+    public static TokenResult checkToken(String token) {
+
+        TokenResult tokenresult = null;
+        try {
+            tokenresult = JWTUtils.parseToken(token);
+        } catch (Exception e) {
+
+        }
+        return tokenresult;
     }
 
     public static void main(String[] args) {

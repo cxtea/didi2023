@@ -30,45 +30,20 @@ public class JWTInterceptor implements HandlerInterceptor {
         String resultString = "";
 
         String token = request.getHeader("Authorization");
-        TokenResult tokenresult = null;
-        try {
-            tokenresult = JWTUtils.parseToken(token);
-        } catch (SignatureVerificationException e) {
-            resultString = "token sign error";
-            result = false;
-        } catch (TokenExpiredException e) {
-            resultString = "token expired";
-            result = false;
-        } catch (AlgorithmMismatchException e) {
-            resultString = "token algorithm error";
-            result = false;
-        } catch (Exception e) {
-            resultString = "token error";
-            result = false;
-        }
-        if(tokenresult == null){
-            resultString = "token invalid";
-            result = false;
-        }else {
-            String phone = tokenresult.getPhone();
-            String identity = tokenresult.getIdentify();
 
-            String accessTokenKey = RedisPrefixUtils.generateTokenKey(phone,identity, TokenConstants.ACCESS_TOKEN_TYPE);
-            String refreshTokenKey = RedisPrefixUtils.generateTokenKey(phone,identity, TokenConstants.REFRESH_TOKEN_TYPE);
+        TokenResult tokenResult = JWTUtils.checkToken(token);
 
-            String redisAccessToken = stringRedisTemplate.opsForValue().get(accessTokenKey);
-            String redisRefreshToken = stringRedisTemplate.opsForValue().get(refreshTokenKey);
 
-            if(StringUtils.isBlank(accessTokenKey)){
-                resultString  = "token invalid";
-                result = false;
-            }else{
-                if(!token.trim().equals(accessTokenKey)){
-                    resultString  = "token invalid";
-                    result = false;
-                }
-            }
-        }
+         if(tokenResult != null){
+             String accessTokenKey = RedisPrefixUtils.generateTokenKey(tokenResult.getPhone(),tokenResult.getIdentify(), TokenConstants.ACCESS_TOKEN_TYPE);
+
+             String redisAccessToken = stringRedisTemplate.opsForValue().get(accessTokenKey);
+             if(StringUtils.isBlank(redisAccessToken) || !token.trim().equals(redisAccessToken)){
+                 resultString  = "token invalid";
+                 result = false;
+             }
+         }
+
 
         if (!result) {
             PrintWriter writer = response.getWriter();
@@ -77,4 +52,6 @@ public class JWTInterceptor implements HandlerInterceptor {
 
         return result;
     }
+
+
 }
