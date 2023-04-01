@@ -1,8 +1,9 @@
 package com.didi2023.servicepassengeruser.service;
 
+import com.didi2023.internalcommon.constant.CommonStatusEnum;
 import com.didi2023.internalcommon.dto.ResponseResult;
 import com.didi2023.internalcommon.response.TokenResponse;
-import com.didi2023.servicepassengeruser.dto.PassengerUser;
+import com.didi2023.internalcommon.dto.PassengerUser;
 import com.didi2023.servicepassengeruser.mapper.PassengerUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,5 +46,17 @@ public class UserService {
         TokenResponse tokenResponse = new TokenResponse();
 
         return ResponseResult.success(tokenResponse);
+    }
+
+    public ResponseResult getUserByPhone(String passengerPhone) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("passenger_phone",passengerPhone);
+        List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
+        if(passengerUsers.size() == 0){
+            return ResponseResult.fail(CommonStatusEnum.USER_NOT_EXISTS.getCode(),CommonStatusEnum.USER_NOT_EXISTS.getValue());
+        }
+        PassengerUser passengerUser = passengerUsers.get(0);
+
+        return ResponseResult.success(passengerUser);
     }
 }

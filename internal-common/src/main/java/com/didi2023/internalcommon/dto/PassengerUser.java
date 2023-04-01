@@ -1,4 +1,4 @@
-package com.didi2023.servicepassengeruser.dto;
+package com.didi2023.internalcommon.dto;
 
 import lombok.Data;
 
@@ -15,4 +15,6 @@ public class PassengerUser {
     private String passengerPhone;
     private byte passengerGender;
     private byte state;
+
+    private String profilePhoto;
 }

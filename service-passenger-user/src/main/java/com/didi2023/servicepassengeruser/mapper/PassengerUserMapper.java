@@ -1,7 +1,7 @@
 package com.didi2023.servicepassengeruser.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.didi2023.servicepassengeruser.dto.PassengerUser;
+import com.didi2023.internalcommon.dto.PassengerUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;

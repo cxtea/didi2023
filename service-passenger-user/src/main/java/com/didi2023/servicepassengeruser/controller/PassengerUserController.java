@@ -4,9 +4,7 @@ import com.didi2023.internalcommon.dto.ResponseResult;
 import com.didi2023.internalcommon.request.VerificationCodeDTO;
 import com.didi2023.servicepassengeruser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PassengerUserController {
@@ -15,7 +13,7 @@ public class PassengerUserController {
     private UserService userService;
 
 
-    @RequestMapping("/user")
+    @PostMapping("/user")
     public ResponseResult loginOrRegister(@RequestBody VerificationCodeDTO verificationCodeDTO){
 
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
@@ -23,5 +21,11 @@ public class PassengerUserController {
         System.out.println(passengerPhone);
 
         return userService.loginOrRegister(passengerPhone);
+    }
+
+    @GetMapping("/user/{phone}")
+    public ResponseResult getUser(@PathVariable("phone") String passengerPhone){
+
+        return userService.getUserByPhone(passengerPhone);
     }
 }
