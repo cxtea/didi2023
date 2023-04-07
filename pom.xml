@@ -18,12 +18,15 @@
 
 
     <modules>
+        <module>api-boss</module>
+        <module>api-driver</module>
+        <module>service-driver-user</module>
         <module>api-passenger</module>
-        <module>internal-common</module>
-        <module>service-verificationcode</module>
         <module>service-passenger-user</module>
+        <module>service-verificationcode</module>
         <module>service-price</module>
         <module>service-map</module>
+        <module>internal-common</module>
     </modules>
 
     <properties>
