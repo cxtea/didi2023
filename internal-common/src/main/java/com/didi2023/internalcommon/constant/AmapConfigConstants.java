@@ -16,5 +16,7 @@ public class AmapConfigConstants {
 
     public static String DURATION = "duration";
 
+    public static String DISTRICT_URL = "https://restapi.amap.com/v3/config/district";
+
 
 }

@@ -1,0 +1,7 @@
+# Project exclude paths
+/*/target/
+*.class
+/.idea/
+/*/src/test/
+/*/.gitignore
+

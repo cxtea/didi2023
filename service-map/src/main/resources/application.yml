@@ -9,5 +9,11 @@ spring:
 
   application:
     name: service-map
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/service-map?characterEncoding=utf-8
+    username: root
+    password: root
+
 amap:
   key: 560615af785b16ec5309d6667a9c345e
