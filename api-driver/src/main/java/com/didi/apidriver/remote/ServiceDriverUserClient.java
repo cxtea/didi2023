@@ -1,6 +1,7 @@
 package com.didi.apidriver.remote;
 
 import com.didi2023.internalcommon.dto.DriverUser;
+import com.didi2023.internalcommon.dto.DriverUserWorkStatus;
 import com.didi2023.internalcommon.dto.ResponseResult;
 import com.didi2023.internalcommon.response.DriverUserResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -20,4 +21,7 @@ public interface ServiceDriverUserClient {
 
     @GetMapping ("/user")
     ResponseResult<DriverUserResponse> getUser(@RequestBody DriverUser driverUser);
+
+    @PostMapping("/driver-user-work-status")
+    ResponseResult changeWorkStatus(@RequestBody DriverUserWorkStatus driverUserWorkStatus);
 }

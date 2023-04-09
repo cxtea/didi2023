@@ -1,9 +1,11 @@
 package com.didi.servicedriveruser.service;
 
 import com.didi.servicedriveruser.mapper.DriverUserMapper;
+import com.didi.servicedriveruser.mapper.DriverUserWorkStatusMapper;
 import com.didi2023.internalcommon.constant.CommonStatusEnum;
 import com.didi2023.internalcommon.constant.DriverCarConstants;
 import com.didi2023.internalcommon.dto.DriverUser;
+import com.didi2023.internalcommon.dto.DriverUserWorkStatus;
 import com.didi2023.internalcommon.dto.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class DriverUserService {
     @Autowired
     private DriverUserMapper driverUserMapper;
 
+    @Autowired
+    private DriverUserWorkStatusMapper driverUserWorkStatusMapper;
+
     public ResponseResult getDriverUserById() {
 
         DriverUser driverUser = driverUserMapper.selectById(1);
@@ -30,16 +35,25 @@ public class DriverUserService {
 
     public ResponseResult addUser(DriverUser driverUser) {
 
-        driverUser.setGmtCreate(LocalDateTime.now());
-        driverUser.setGmtModified(LocalDateTime.now());
-        int insert = driverUserMapper.insert(driverUser);
+        LocalDateTime now = LocalDateTime.now();
+        driverUser.setGmtCreate(now);
+        driverUser.setGmtModified(now);
+        driverUserMapper.insert(driverUser);
 
-        return ResponseResult.success(insert);
+        // 新增司机出车状态 此时driverUser已经有id了
+        DriverUserWorkStatus driverUserWorkStatus = new DriverUserWorkStatus();
+        driverUserWorkStatus.setDriverId(driverUser.getId());
+        driverUserWorkStatus.setWorkStatus(DriverCarConstants.DRIVER_WORK_STATUS_OFFLINE);
+        driverUserWorkStatus.setGmtCreate(now);
+        driverUserWorkStatus.setGmtModified(now);
+
+        driverUserWorkStatusMapper.insert(driverUserWorkStatus);
+        return ResponseResult.success("");
     }
 
     public ResponseResult updateUser(DriverUser driverUser) {
-
-        driverUser.setGmtModified(LocalDateTime.now());
+        LocalDateTime now = LocalDateTime.now();
+        driverUser.setGmtModified(now);
         int i = driverUserMapper.updateById(driverUser);
 
         return ResponseResult.success(i);

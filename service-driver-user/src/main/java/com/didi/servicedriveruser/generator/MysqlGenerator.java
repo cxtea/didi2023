@@ -16,7 +16,7 @@ public class MysqlGenerator {
         }).packageConfig(builder -> {
             builder.parent("com.didi.servicedriveruser").pathInfo(Collections.singletonMap(OutputFile.mapperXml, "D:\\IdeaProjects\\didi2023\\service-driver-user\\src\\main\\java\\com\\didi\\servicedriveruser\\mapper"));
         }).strategyConfig(builder -> {
-            builder.addInclude("driver_car_binding_relationship").entityBuilder().enableLombok();
+            builder.addInclude("driver_user_work_status").entityBuilder().enableLombok();
         }).templateEngine(new FreemarkerTemplateEngine()).execute();
     }
 }
