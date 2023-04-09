@@ -7,6 +7,8 @@ public class VerificationCodeDTO {
 
     String passengerPhone ;
 
+    String driverPhone;
+
     String verificationCode;
 
 

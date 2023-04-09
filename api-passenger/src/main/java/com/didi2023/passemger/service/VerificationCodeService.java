@@ -39,7 +39,7 @@ public class VerificationCodeService {
 
         System.out.println("验证码:"+numberCode);
         //调用redis 服务将验证码缓存到redis
-        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone,IdentifyConstant.PASSENGER_IDENTITY);
         stringRedisTemplate.opsForValue().set(key, numberCode + "", 2, TimeUnit.MINUTES);
 
         //通过短信服务商,将对应的验证码发送到手机上 ,阿里短信服务 TODO
@@ -56,7 +56,7 @@ public class VerificationCodeService {
     public ResponseResult checkCode(String passengerPhone,String verificationCode){
 
         //生成key
-        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generateKeyByPhone(passengerPhone,IdentifyConstant.PASSENGER_IDENTITY);
         //根据key获取验证码
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
         System.out.println("获取到redis中的验证码:"+ codeRedis);
@@ -75,8 +75,6 @@ public class VerificationCodeService {
         //颁发令牌
         String accessToken = JWTUtils.generateToken(passengerPhone, IdentifyConstant.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);
         String refreshToken = JWTUtils.generateToken(passengerPhone, IdentifyConstant.PASSENGER_IDENTITY, TokenConstants.REFRESH_TOKEN_TYPE);
-
-
 
         //将token 存到redis中
         String accessTokenKey = RedisPrefixUtils.generateTokenKey(passengerPhone,IdentifyConstant.PASSENGER_IDENTITY,TokenConstants.ACCESS_TOKEN_TYPE);

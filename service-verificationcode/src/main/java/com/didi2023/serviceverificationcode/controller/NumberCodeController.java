@@ -11,7 +11,7 @@ public class NumberCodeController {
 
 
     @RequestMapping("/numberCode/{size}")
-    public ResponseResult numberCode(@PathVariable("size") int size) {
+    public ResponseResult<NumberCodeResponse> numberCode(@PathVariable("size") int size) {
 
         // 生成验证码
 
@@ -22,8 +22,6 @@ public class NumberCodeController {
 
         return ResponseResult.success(response);
     }
-
-
 
 
 }
