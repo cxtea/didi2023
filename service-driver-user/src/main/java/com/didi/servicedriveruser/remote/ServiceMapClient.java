@@ -17,4 +17,7 @@ public interface ServiceMapClient {
 
     @PutMapping("/trace/add")
     ResponseResult<TraceResponse> addTrace(@RequestBody AmapDTO amap);
+
+    @PutMapping("/point/upload")
+    ResponseResult uploadPoint(@RequestBody AmapDTO amap);
 }

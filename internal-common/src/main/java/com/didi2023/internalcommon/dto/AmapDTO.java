@@ -12,4 +12,6 @@ public class AmapDTO {
     private String tid;
 
     private String desc;
+
+    private String points ;
 }
