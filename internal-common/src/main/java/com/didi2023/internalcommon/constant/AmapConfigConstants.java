@@ -19,4 +19,7 @@ public class AmapConfigConstants {
     public static String DISTRICT_URL = "https://restapi.amap.com/v3/config/district";
 
 
+    public static String SERVICE_ADD_URL = "https://tsapi.amap.com/v1/track/service/add";
+
+    public static String TERMINAL_ADD_URL = "https://tsapi.amap.com/v1/track/terminal/add";
 }
