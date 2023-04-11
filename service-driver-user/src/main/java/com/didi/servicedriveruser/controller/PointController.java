@@ -1,7 +1,7 @@
 package com.didi.servicedriveruser.controller;
 
 import com.didi.servicedriveruser.service.PointService;
-import com.didi2023.internalcommon.dto.AmapDTO;
+import com.didi2023.internalcommon.request.AmapDTO;
 import com.didi2023.internalcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

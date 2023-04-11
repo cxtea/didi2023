@@ -1,7 +1,7 @@
 package com.didi2023.servicemap.remote;
 
 import com.didi2023.internalcommon.constant.AmapConfigConstants;
-import com.didi2023.internalcommon.dto.AmapDTO;
+import com.didi2023.internalcommon.request.AmapDTO;
 import com.didi2023.internalcommon.dto.ResponseResult;
 import com.didi2023.internalcommon.response.TraceResponse;
 import net.sf.json.JSONObject;

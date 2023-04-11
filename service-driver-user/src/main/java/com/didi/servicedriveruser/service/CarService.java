@@ -2,7 +2,7 @@ package com.didi.servicedriveruser.service;
 
 import com.didi.servicedriveruser.mapper.CarMapper;
 import com.didi.servicedriveruser.remote.ServiceMapClient;
-import com.didi2023.internalcommon.dto.AmapDTO;
+import com.didi2023.internalcommon.request.AmapDTO;
 import com.didi2023.internalcommon.dto.Car;
 import com.didi2023.internalcommon.dto.ResponseResult;
 import com.didi2023.internalcommon.response.TerminalResponse;

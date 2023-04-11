@@ -1,5 +1,6 @@
-package com.didi2023.internalcommon.dto;
+package com.didi2023.internalcommon.request;
 
+import com.didi2023.internalcommon.dto.Point;
 import lombok.Data;
 
 @Data
@@ -13,5 +14,5 @@ public class AmapDTO {
 
     private String desc;
 
-    private String points ;
+    private Point[] points ;
 }

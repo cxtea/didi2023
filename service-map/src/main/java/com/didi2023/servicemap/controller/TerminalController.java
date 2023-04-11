@@ -1,6 +1,6 @@
 package com.didi2023.servicemap.controller;
 
-import com.didi2023.internalcommon.dto.AmapDTO;
+import com.didi2023.internalcommon.request.AmapDTO;
 import com.didi2023.internalcommon.dto.ResponseResult;
 import com.didi2023.internalcommon.response.TerminalResponse;
 import com.didi2023.servicemap.service.TerminalService;
