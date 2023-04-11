@@ -1,5 +1,6 @@
 package com.didi2023.internalcommon.dto;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,8 +16,7 @@ import java.time.LocalDateTime;
  * @author shawn
  * @since 2023-04-08
  */
-@Getter
-@Setter
+@Data
 public class Car implements Serializable {
 
     private static final long serialVersionUID = 1L;
