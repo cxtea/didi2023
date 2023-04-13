@@ -33,8 +33,8 @@ public class CarController {
         return carService.updateCar(car);
     }
 
-    @GetMapping("/car/{id}")
-    public ResponseResult getCarById(@PathVariable Integer id){
+    @GetMapping("/car")
+    public ResponseResult<Car> getCarById(@RequestParam Integer id){
 
         return carService.getCarById(id);
     }

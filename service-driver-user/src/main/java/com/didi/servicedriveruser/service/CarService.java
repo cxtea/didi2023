@@ -53,7 +53,7 @@ public class CarService {
         return ResponseResult.success(update);
     }
 
-    public ResponseResult getCarById(Integer id) {
+    public ResponseResult<Car> getCarById(Integer id) {
 
         Car car = carMapper.selectById(id);
 

@@ -6,11 +6,15 @@ import lombok.Data;
 @Data
 public class AmapDTO {
 
+    private Long carId;
+
     private String name;
 
     private String sid;
 
     private String tid;
+
+    private String trid;
 
     private String desc;
 

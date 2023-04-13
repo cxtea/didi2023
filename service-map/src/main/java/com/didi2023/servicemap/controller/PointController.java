@@ -17,7 +17,7 @@ public class PointController {
     private PointService pointService;
 
     @PutMapping("/upload")
-    public ResponseResult<TraceResponse> pointUpdate(@RequestBody AmapDTO amap){
+    public ResponseResult pointUpdate(@RequestBody AmapDTO amap){
 
         return pointService.upload(amap);
     }
